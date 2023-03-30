@@ -10,5 +10,5 @@ import org.junit.runner.RunWith;
         glue = {"steps"}
 )
 
-public class RenCucumber {
+public class RunCucumber {
 }
