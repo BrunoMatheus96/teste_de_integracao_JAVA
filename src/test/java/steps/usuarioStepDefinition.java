@@ -1,8 +1,10 @@
 package steps;
 
 import io.cucumber.java.pt.Entao;
+import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import io.restassured.http.ContentType;
+import support.domain.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,24 +14,28 @@ import static io.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.is;
 
 public class usuarioStepDefinition {
-    private Map<String, String> expectedUser = new HashMap<>();
-    String baseUrl = "https://petstore.swagger.io/v2/user";
+    private User user;
 
-    @Quando("eu faco um POST com os segunites valores:")
-    public void euFacoUmPOSTComOsSegunitesValores(Map<String, String> user) {
-        expectedUser = user;
+    private static final String CREATE_USER_ENDPOINT = "user";
+    private static final String USER_ENDPOINT = "user/{name}";
 
+    @Quando("crio um usuário")
+    public void crioUmUsuário() {
+        user = User.builder().build();
         given().
                 body(user).
-                when().post("user").
+                when().post(CREATE_USER_ENDPOINT).
                 then().
                 statusCode(200);
     }
-    @Entao("quando faco um GET para {word}, o usuario criado nao e retornado")
-    public void quandoFacoUmGETParaRafaelOUsuarioCriadoNaoERetornado(String endpoint) {
-        when().get(endpoint).
+
+    @Então("o usuário é salvo no sistema")
+    public void oUsuárioÉSalvoNoSistema() {
+        given().
+                pathParams("name", user.getUsername()).
+        when().get(USER_ENDPOINT).
                 then().
                 statusCode(200).
-                body("username", is(expectedUser.get("username")));
+                body("username", is(user.getUsername()));
     }
 }
