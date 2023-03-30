@@ -13,3 +13,8 @@
        | phone      | 995317250        |
        | userStatus | 0                |
      Entao quando faco um GET para /rafael, o usuario criado nao e retornado
+
+   @focus
+   Cenario: Criar usuário na loja refletindo o negócio
+     Quando crio um usuário
+     Então o usuário é salvo no sistema
