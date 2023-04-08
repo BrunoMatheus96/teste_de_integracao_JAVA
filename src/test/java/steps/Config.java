@@ -26,9 +26,12 @@ public class Config {
                 setContentType(ContentType.JSON).
                 build();
 
-        //RestAssured.responseSpecification = new ResponseSpecBuilder().
-                //expectContentType(ContentType.JSON).
-                //build();
+        /*
+        RestAssured.responseSpecification = new ResponseSpecBuilder().
+                expectContentType(ContentType.JSON).
+                build();
+
+         */
     }
     private String getToken(){
         return  "grant access";

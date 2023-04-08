@@ -13,9 +13,11 @@ public class AnimalStepDedinition {
 
     @Quando("eu pesquiso todos os animais disponíveis")
     public void euPesquisoTodosOsAnimaisDisponiveis() {
+        System.out.println("Teste1");
     }
 
     @Então("eu recebo a lista de animais disponpiveis")
     public void euReceboAListaDeAnimaisDisponpiveis() {
+        System.out.println("Teste2");
     }
 }

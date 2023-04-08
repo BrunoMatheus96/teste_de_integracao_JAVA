@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = {"steps"},
         plugin = {"pretty", "html:build/reports/feature.html"},
-        tags = "@focus"
+        tags = "@all"
 )
 
 public class RunCucumber {

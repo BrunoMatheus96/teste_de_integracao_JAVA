@@ -1,6 +1,7 @@
  # language: pt
 
  Funcionalidade: Gerenciamento de um usuario na Petstore
+   @all
    @focus
    Cenario: Lista somente animais disponiveis para a venda
      Dado que eu possua animais disponíveis
